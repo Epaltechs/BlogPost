@@ -1,36 +1,54 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
-  "https://github.com/#{repo_name}.git"
-end
+ruby '3.1.2'
 
-gem 'bootstrap', '~> 4.1.1'
-gem 'font-awesome-rails'
-gem 'jbuilder', '~> 2.5'
-gem 'puma', '~> 3.7'
-gem 'rails', '~> 5.1.4'
-gem 'sass-rails', '~> 5.0'
-gem 'slim-rails'
-gem 'sqlite3'
-gem 'turbolinks', '~> 5'
-gem 'uglifier', '>= 1.3.0'
+# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem 'rails', '~> 7.0.3'
+
+# Use postgresql as the database for Active Record
+gem 'pg', '~> 1.1'
+
+gem 'rubocop', '>= 1.0', '< 2.0'
+
+# Use the Puma web server [https://github.com/puma/puma]
+gem 'puma', '~> 5.0'
+
+# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+# gem "jbuilder"
+
+# Use Redis adapter to run Action Cable in production
+# gem "redis", "~> 4.0"
+
+# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
+# gem "kredis"
+
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+# gem "bcrypt", "~> 3.1.7"
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data'
+
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', require: false
+
+# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+# gem "image_processing", "~> 1.2"
+
+# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
+gem 'rack-cors'
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
+
   gem 'rspec-rails'
   gem 'selenium-webdriver'
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
+  # gem "spring"
 end
-
-group :test do
-  gem 'capybara', '~> 2.13'
-end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'rails-controller-testing'
+gem 'rspec-activemodel-mocks'
